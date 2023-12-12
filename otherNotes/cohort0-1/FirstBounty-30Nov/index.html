@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.11.7/video-js.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.11.7/video.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-eme@3.8.0/dist/videojs-contrib-eme.js"></script>
+
+
+    <!-- <script src="https://unpkg.com/videojs-sprite-thumbnails@2.1.1/dist/videojs-sprite-thumbnails.min.js"></script>
+
+    <script src="https://gist.github.com/c3founder/0d47fe3f15f677a0a6f0e96b4868e46a.js"></script> -->
+
+    <title>Test VideJS DRM</title>
+
+</head>
+<body>
+
+    <div style="margin: 50px auto;">
+        <video id="my-video" class="video-js"></video>
+    </div>
+    <div class="timestamp-control"></div>
+
+    <script>
+        
+        var player = videojs(
+            'my-video',
+            {
+                controls: true,
+                fluid: true,
+                autoplay:'muted',
+                // playbackRates:[0.25,0.5,1.0,1.25,1.5,1.75,2.00],
+                html5: {
+                    vhs: { 
+                        overrideNative: true 
+                    }
+                }
+
+            },
+            function() {
+                var player = this;
+                player.eme();
+                player.src({
+                    src: 'https://cdn.bitmovin.com/content/assets/art-of-motion_drm/mpds/11331.mpd',
+                    type: 'application/dash+xml',
+                    keySystems: {
+                    'com.widevine.alpha': 'https://cwip-shaka-proxy.appspot.com/no_auth',                     
+                    }
+                });
+
+            
+                player.ready(function() {
+
+                    player.tech(true).on('keystatuschange', function(event) {    
+                        console.log("event: ", event);        
+
+                    });                        
+
+                });
+                
+                
+            }
+        );
+        
+        const timestamps = [10, 20, 30]; // Replace with your timestamps
+
+        // Create segments/markers on the seekbar
+        timestamps.forEach(time => {
+        const marker = document.createElement('div');
+        marker.className = 'segment-marker';
+        const percent = (time / player.duration()) * 100;
+        marker.style.left = `${percent}%`;
+        player.controlBar.progressControl.el().appendChild(marker);
+
+        // Handle click on segment marker to seek video
+        marker.addEventListener('click', () => {
+            player.currentTime(time);
+        });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Video Player with Timestamps</title>
+  <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet">
+  <style>
+    /* Add custom CSS for segment markers */
+    .segment-marker {
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background-color: red;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360">
+    <source src="https://www.pexels.com/video/diga-sardegna-drone-19297172/" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <script src="https://vjs.zencdn.net/7.15.4/video.js"></script>
+  <script>
+    // Initialize the video player
+    const player = videojs('my-video');
+
+    // Define sample timestamps (in seconds)
+    const timestamps = [10, 30, 50, 80]; // Replace with your timestamps
+
+    // Create segments/markers on the seekbar
+    timestamps.forEach(time => {
+      const marker = document.createElement('div');
+      marker.className = 'segment-marker';
+      const percent = (time / player.duration()) * 100;
+      marker.style.left = `${percent}%`;
+      player.controlBar.progressControl.el().appendChild(marker);
+
+      // Handle click on segment marker to seek video
+      marker.addEventListener('click', () => {
+        player.currentTime(time);
+      });
+    });
+  </script>
+</body>
+</html>

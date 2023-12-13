@@ -1,11 +1,17 @@
 //How to create and expose http server 
-
+const bp = require("body-parser");
 const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/',(req,res)=>{
-    res.send("Hello World");
+app.use(bp.json());
+
+// app.get('/',(req,res)=>{
+//     res.send("Hello World");
+// });
+app.post("/",(req,res)=>{
+    console.log(req.body);
+    res.send("This is post req");
 });
 
 app.listen(port,()=>{

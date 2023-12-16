@@ -6,9 +6,9 @@ const port = 3000;
 
 app.use(bp.json());
 
-// app.get('/',(req,res)=>{
-//     res.send("Hello World");
-// });
+app.get('/',(req,res)=>{
+    res.send("Hello World");
+});
 app.post("/",(req,res)=>{
     console.log(req.body);
     res.send("This is post req");

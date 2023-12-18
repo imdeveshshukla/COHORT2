@@ -42,7 +42,7 @@ app.get("/files/:filename",(req,res)=>{
   })
 });
 
-app.listen(3001,()=>{console.log("STarted");});
+app.listen(3000,()=>{console.log("STarted");});
 
 
 module.exports = app;

@@ -39,16 +39,71 @@
 
   Testing the server - run `npm run test-todoServer` command in terminal
  */
-  const express = require('express');
-  const bodyParser = require('body-parser');
-  const fs = require("fs");
-  const app = express();
-  
-  app.use(bodyParser.json());
+const express = require('express');
+const bodyParser = require('body-parser');
+const fs = require("fs");
+const app = express();
+const db = require("./todos.json");
+const { findSourceMap } = require('module');
 
-  app.get("/addTodo",(req,res)=>{
-    const task = req.body.task;
-    fs.writeFile("todos.json",task);
+// console.log(db);
+
+
+app.use(bodyParser.json());
+
+app.get("/todos",(req,res)=>{
+  res.send(db);
+  // fs.readFile("myTodoDB.txt",(err,val)=>{
+  //   if(err)
+  //     res.json({err});
+  //   else
+  //     res.json(val.toString());
+  // });
+});
+
+app.post("/todos",(req,res)=>{
+  const task = req.body.title;
+  const finished = req.body.completed;
+  const desc = req.body.description;
+  if(task!=null && finished!=null && desc!=null)
+  {
+    const todoData = {
+      "title": task,
+      "completed":finished,
+      "Description":desc
+    };
+    db.push(todoData);
+    res.send(201,"Added");
+    fs.appendFile("myTodoDB.txt",JSON.stringify(todoData)+","+"\n",(err)=>{
+      if(err)
+        console.log(err);
+    });
+  }
+  else
+  {
+    res.send(404);
+  }
+});
+
+app.put("/todos/:id",(req,res)=>{
+  const id = req.params.id;
+  const tit = req.body.title;
+  const finish = req.body.completed;
+  db[id].title = tit;
+  db[id].completed = finish;
+  res.send(201);
+  fs.appendFile("myTodoDB.txt",JSON.stringify(db[id])+","+"\n",(err)=>{
+    if(err)
+      console.log(err);
   });
-  
-  module.exports = app;
+});
+
+app.delete("/todos/:id",(req,res)=>{
+  const id = req.params.id;
+  delete db[id];
+  res.send(410); 
+});
+
+app.listen(3000);
+
+module.exports = app;

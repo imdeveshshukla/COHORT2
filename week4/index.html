@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-End</title>
+</head>
+<body>
+    <label for="title">Title : </label>
+    <input type="text" name="title" id="title">
+    <br>
+    <label for="Desc">Description : </label>
+    <input type="text" name="des" id="des">
+    <br>
+    <button type="submit" onclick="addTodo()">Add</button>
+    <script>
+        function addTodo(){
+            var title = document.getElementById("title").value;
+            console.log("Btn CLicked = "+title);
+        }
+    </script>
+</body>
+</html>

@@ -13,10 +13,18 @@
     <input type="text" name="des" id="des">
     <br>
     <button type="submit" onclick="addTodo()">Add</button>
+    <p id="addData"></p>
     <script>
         function addTodo(){
             var title = document.getElementById("title").value;
             console.log("Btn CLicked = "+title);
+            // https://placebear.com/g/200/300
+            fetch("https://filelocator.deveshshukla160.repl.co/files").then((res)=>{
+                res.text().then((val)=>{
+                    console.log(JSON.parse(val));
+                })
+            })
+            
         }
         //30/12/23
     </script>

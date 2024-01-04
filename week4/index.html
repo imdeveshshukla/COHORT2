@@ -19,9 +19,9 @@
             var title = document.getElementById("title").value;
             console.log("Btn CLicked = "+title);
             // https://placebear.com/g/200/300
-            fetch("https://filelocator.deveshshukla160.repl.co/files").then((res)=>{
+            fetch("https://foldermanager.onrender.com/files").then((res)=>{
                 res.text().then((val)=>{
-                    console.log(JSON.parse(val));
+                    console.log(val);
                 })
             })
             

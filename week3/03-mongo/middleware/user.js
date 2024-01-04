@@ -4,14 +4,16 @@ function userMiddleware(req, res, next) {
     // You need to check the headers and validate the user from the user DB. Check readme for the exact headers to be expected
     const user = req.headers.user;
     const pass = req.headers.pass;
-    console.log(user+"\n"+pass);
+    // console.log(user+"\n"+pass);
     User.findOne({
         username:user,
         password:pass
     })
     .then(function(val){
         if(val)
+        {
             next()
+        }
         else{
             console.log("Error");
             res.status(404).json({

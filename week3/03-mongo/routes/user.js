@@ -36,16 +36,41 @@ router.post('/courses/:courseId', userMiddleware, (req, res) => {
     // Implement course purchase logic
     const cId = req.params.courseId;
     const user = req.headers.user;
-    User.updateOne({user},{
-        "$push" :{
+    // console.log(user+""+cId);
+    User.updateOne({
+        username:user
+    },{
+        $push :{
             PurchasedCourse:cId
         }
-    });
+    })
+    .then(function(val){
+        res.json({
+            msg:"Purchased Course"
+        })
+    })
+    .catch(function(err){
+        console.log(err);
+        res.json({
+            msg:"Some Error Occured",
+            Error:err
+        })
+    })
 });
 
-router.get('/purchasedCourses', userMiddleware, (req, res) => {
+router.get('/purchasedCourses', userMiddleware, async (req, res) => {
     // Implement fetching purchased courses logic
-    res.send("Courses");
+    const user = await User.findOne({
+        username:req.headers.user
+    });
+    const courses = user.PurchasedCourse;
+    const purcCourse = await Course.find({
+        _id:courses
+    });
+    res.json({
+        course:purcCourse
+    });
+    
 });
 
 

@@ -1,14 +1,14 @@
-const { useState } = require("react")
+const { useState,React } = require("react")
 
 function App(){
-  
+
   return(
     <>
       <HeaderWithButton></HeaderWithButton>
       <Header title="devesh2"></Header>
       <Header title="devesh2"></Header>
-      <Header title="devesh2"></Header>           /* here we sending same parameters so memo does not rerendering*/
-    </>
+      <Header title="devesh2"></Header>           
+    </>/* here we sending same parameters so memo does not rerendering*/
   )
 }
 
@@ -37,3 +37,4 @@ const Header = React.memo(function Header({title}){    //we can also write (prop
   )
 })  //when we pass same parameters and learn about it 
 
+export default App;

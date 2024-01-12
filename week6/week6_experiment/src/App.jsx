@@ -22,7 +22,7 @@ function HeaderWithButton(){          //HeaderWithButton is only rerendering not
   return(
     <>
     <button onClick={setTitle}></button>
-    <Header title={title}></Header>
+    <Header title={title}> </Header>
     </>
   )
 }

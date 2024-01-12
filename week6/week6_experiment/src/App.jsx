@@ -1,4 +1,6 @@
-const { useState,React } = require("react")
+// const { useState, React } = require("react")
+import React, { useState } from "react";
+
 
 function App(){
 
@@ -29,7 +31,7 @@ function HeaderWithButton(){          //HeaderWithButton is only rerendering not
 
 
 
-const Header = React.memo(function Header({title}){    //we can also write (props) and then props.title
+const Header = React.memo(function Header(title){    //we can also write (props) and then props.title
   return(
     <>
       {title}

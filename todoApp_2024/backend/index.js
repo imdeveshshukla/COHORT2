@@ -9,9 +9,9 @@ app.use(cors());
 app.get("/todos",async function(req,res) {
     const todos = await todo.find({});
 
-    res.json({
+    res.json(
         todos
-    })
+    )
 });
 
 
@@ -48,11 +48,21 @@ app.put("/completed",async function(req,res){
         return;
     }
 
-    await todo.update({
-        _id : req.body.id
-    },{
-        completed:true
-    })
+    try{
+
+        await todo.updateOne({
+            _id : updatePayLoad.id
+        },{
+            completed:false
+        })
+    }
+    catch(err){
+        res.status(411).json({
+            msg: "Something Went Wrong",
+        })
+        console.log(err);
+        return;
+    }
 
     res.json({
         msg : "Todo Updated"

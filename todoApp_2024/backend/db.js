@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 //mongodb://localhost:27017
-
+// mongodb+srv://deveshshukla1603:deveshshukla@cluster0.b2mpqv0.mongodb.net/
 mongoose.connect("mongodb+srv://deveshshukla1603:deveshshukla@cluster0.b2mpqv0.mongodb.net/?retryWrites=true&w=majority");
 
 // const todoSchema = new mongoose.Schema({
@@ -19,4 +19,4 @@ const todoSchema = new mongoose.Schema({
 
 const todos = mongoose.model('todos',todoSchema);
 
-module.exports(todo);
+module.exports = todos;

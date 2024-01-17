@@ -13,7 +13,7 @@ mongoose.connect("mongodb+srv://deveshshukla1603:deveshshukla@cluster0.b2mpqv0.m
 
 const todoSchema = new mongoose.Schema({
     title:String,
-    description:String,
+    desc:String,
     completed:Boolean
 });
 

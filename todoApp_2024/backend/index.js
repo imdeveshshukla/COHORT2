@@ -29,7 +29,7 @@ app.post("/todos",async function(req,res){
     
     await todo.create({
         title:createPayLoad.title,
-        desc:createPayLoad.description,
+        desc:createPayLoad.desc,
         completed:false
     })
     

@@ -1,4 +1,4 @@
-import React , { useState,lazy,Suspense } from 'react'
+import React , { useState,lazy,Suspense, useContext } from 'react'
 import { BrowserRouter,Routes,Route, useNavigate } from 'react-router-dom'
 import './App.css';
 
@@ -6,50 +6,56 @@ const Dashboard = lazy(()=>import('./Pages/Dashboard'));
 const Landing = lazy(()=>import('./Pages/Landing'));
 // import Landing  from './Pages/Landing'
 
+import {CountContext} from './Context.jsx';
 
 
 
 function App() {
-  const [count, setCoun] = useState(0)
+  const [c, setC] = useState(0)
 
   //Suspense APi
+  //Wrap the outer component with context provider to teleport the value and pass that value Context.Provider
   console.log("rerenders");
   return(
     <>
-      <Count count ={count} setCoun={setCoun}/>
-      {/* hi */}
+      <CountContext.Provider value={{c, setC}}>
+          <Count/>
+      </CountContext.Provider>
     </>
   )
   
 }
 
-function Count({count, setCoun}){
+function Count(){
   return (
     <div>
-      <Countrenderer count={count}></Countrenderer>
-      <Button count={count} setCount={setCoun}></Button>
+      <Countrenderer></Countrenderer>
+      <Button></Button>
     </div>
   )
 }
 
 
-function Countrenderer({count}){
+function Countrenderer(){
+  const count = useContext(CountContext);
   return(
     <>
-    {count}
+    {count.c}
     </>
   )
 }
 
-function Button({count,setCount}){
+function Button(){
+  const count = useContext(CountContext);
+  
   return(
     <>
       <button onClick={()=>{
-        setCount(count+1)
+        count.setC(count.c+1)
       }}>Increase</button>
 
       <button onClick={()=>{
-        setCount(count-1)
+        count.setC(count.c-1)
       }}>Decrease</button>
     </>
   )

@@ -1,5 +1,6 @@
-
+import { useEffect } from "react"
 export function CreateTodo(){
+    // useEffect({});
     return(
         <div>
             <input type="text" name="" id="" placeholder="title" />

@@ -1,0 +1,38 @@
+.bussinessCard{
+    border: 1px solid grey;
+    border-radius: 5%;
+    display: block;
+    width: 500px;
+    background-color: beige;
+    box-shadow: 1px 2px rgb(156, 156, 156);
+    /* z-index: 1; */
+    padding: 10px; 
+    margin: 10px;
+}
+a{
+    text-decoration: none;
+    color: wheat;
+}
+h1{
+    word-wrap: break-word;
+}
+ul{
+    list-style-type: none;
+}
+p{
+    font-size: larger;
+}
+button{
+    margin: 2%;
+    background-color: rgb(86, 89, 245);
+    /* border-style: none; */
+    color: wheat;
+    border: 2px solid rgb(86, 89, 245);
+    border-radius: 5%;
+    width: 80px;
+    height: 30px;
+}
+button:hover{
+    background-color: rgb(132, 134, 231);
+    border: 2px solid rgb(132, 134, 231);
+}

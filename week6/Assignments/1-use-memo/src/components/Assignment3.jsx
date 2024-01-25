@@ -12,16 +12,32 @@ export const Assignment3 = () => {
     ]);
 
     // Your code starts here
-    const totalValue = 0;
+    var totalValue = useMemo(()=>{
+        return items.map((item)=>(item.value)).reduce((acc,curr)=> (acc = acc+curr),0);
+    },[items]);
+    
     // Your code ends here
+
+
+    function addItems() {
+        setItems([...items,{name:'Eggs',value:100}]);
+    }
+    console.log("re-renders");
     return (
         <div>
             <ul>
-                {items.map((item, index) => (
+
+                {items.map(function(item, index){
+
+                    //totalValue +=item.value
+                    return(
                     <li key={index}>{item.name} - Price: ${item.value}</li>
-                ))}
+                    )
+                })}
             </ul>
             <p>Total Value: {totalValue}</p>
+
+            <button onClick={addItems}>Add Items</button>
         </div>
     );
 };

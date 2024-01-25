@@ -6,6 +6,7 @@ fs.readFile('a.txt',"utf-8",function(err, data) {
 })
 //-----------------------
 
+
 console.log("Hello");
 let sum  = 0;
 

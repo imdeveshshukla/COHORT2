@@ -1,25 +1,24 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import 'cors';
 
 
 
 function App() {
-  const [count, setCount] = useState([])
-  useEffect(()=>{
 
-    fetch("https://sum-server.100xdevs.com/todo?id=1")
-    .then(async function (res){
-        console.log(res);
-        const data = await res.data.todo;
-        setCount(data);
-        console.log(data);
-    });
-  },[])
-  return (
-    <>
-      <h1>{count.title}</h1>
-    </>
-      
+  const divRef = useRef();
+  useEffect(() => {
+    console.log(divRef.current);
+    setTimeout(() => {
+      divRef.current.innerHTML = 10
+    }, 5000);
+  }, [])
+
+  const incomeTax = 20000;
+
+  return(
+    <div>
+      hi there , your income tax return is <div ref={divRef}>{incomeTax}</div>
+    </div>
   )
 }
 

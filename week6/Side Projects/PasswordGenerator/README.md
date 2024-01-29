@@ -19,5 +19,15 @@ To run this project locally, follow these steps:
    ```bash
    git clone <repository_url>
    ```
-2.Navigate to the project directory
-
+2. Navigate to the project directory
+   ```bash
+   cd password-generator
+   ```
+3. Install the dependencies
+   ```bash
+   npm install
+   ```
+4. Start the server:
+   ```bash
+   npm run dev
+   ```

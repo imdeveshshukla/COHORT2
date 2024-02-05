@@ -1,11 +1,14 @@
 import './Assignment1.css'
-export default function Assignment1(){
+export default function Assignment1({data}){
 
     return(
         <div className="Cards">
-            <img src="https://picsum.photos/200/300" alt="ProfileImg" />
-            <p>Devesh Shukla</p>
-            <p>London</p>
+            <div className='IMBackgroung'></div>
+            <img src={data.picture} alt="ProfileImg" />
+            <div className='Detatils'>
+                <p>{data.name}</p>
+                <p>{data.gender}</p>
+            </div>
             <div className="stats">
                 <div className="followers">
                     <p>90K</p>

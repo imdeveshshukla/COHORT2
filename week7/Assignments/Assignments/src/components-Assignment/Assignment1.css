@@ -12,16 +12,16 @@
 }
 .IMBackgroung{
     width: 100%;
-    height: 45%;
+    height: 50%;
     margin: 0;
     background-image: url("https://picsum.photos/400/600/?blur");
     /* background-color: aqua; */
-    position: relative;
-    bottom: 32px;
+    /* position: relative; */
+    /* bottom: 32px; */
 }
 img{
-    position: absolute;
-    top: 90px;
+    /* position: absolute; */
+    /* top: 90px; */
     width: 80px;
     height: 80px;
     border-radius: 100%;

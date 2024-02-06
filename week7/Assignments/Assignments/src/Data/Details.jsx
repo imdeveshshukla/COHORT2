@@ -1,18 +1,5 @@
 export const data = [
-    {
-      "_id": "65bfd47baf6c20a69645d75b",
-      "index": 0,
-      "guid": "c110ff47-5336-47c6-8760-465f798b2f95",
-      "picture": "http://placehold.it/32x32",
-      "age": 31,
-      "eyeColor": "brown",
-      "name": "Vaughn Cooley",
-      "gender": "male",
-      "company": "OTHERSIDE",
-      "email": "vaughncooley@otherside.com",
-      "phone": "+1 (942) 552-2573",
-      "address": "371 Radde Place, Siglerville, Northern Mariana Islands"
-    },
+    
     {
       "_id": "65bfd47bee7b97789816c26b",
       "index": 1,

@@ -1,0 +1,9 @@
+.BtnGrp{
+    border: 1px solid black;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 50%;
+    display: flex;
+    gap: 10px;
+}

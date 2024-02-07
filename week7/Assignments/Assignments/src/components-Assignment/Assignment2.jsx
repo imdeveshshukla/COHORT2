@@ -1,26 +1,39 @@
+import { useEffect, useState } from 'react';
 import './Assignment2.css'
 export default function Assignment2(){
-    function changeColor(color) {
-        document.body.style.backgroundColor = color;
+    const [color,setColor] = useState('white');
+    const [textColor,settextColor] = useState('black');
+
+    useEffect(()=>{
+        document.body.style.backgroundColor = color
+        if(color=='black')
+            settextColor('white');
+        else
+        settextColor('black')
+    
+        document.body.style.color = textColor;
     }
+        
+    ,[color,textColor]);
+
 
     return<div className="BtnGrp">
         <button className='red' style={{'background-color':'red'}} 
-        onClick={()=>changeColor('red')}
+        onClick={()=>setColor('red')}
         >Red</button>
         <button className='yellow' style={{'background-color':'yellow'}} 
-        onClick={()=>changeColor('yellow')}>Yellow</button>
+        onClick={()=>setColor('yellow')}>Yellow</button>
         <button style={{'background-color':'black','color':'white'}}
-        onClick={()=>changeColor('black')}
+        onClick={()=>setColor('black')}
         >Black</button>
         <button style={{'background-color':'purple'}}
-        onClick={()=>changeColor('purple')}
+        onClick={()=>setColor('purple')}
         >Purple</button>
         <button style={{'background-color':'green'}}
-        onClick={()=>changeColor('green')}
+        onClick={()=>setColor('green')}
         >Green</button>
         <button style={{'background-color':'white'}}
-        onClick={()=>changeColor('white')}
+        onClick={()=>setColor('white')}
         >White</button>
     </div>
 }

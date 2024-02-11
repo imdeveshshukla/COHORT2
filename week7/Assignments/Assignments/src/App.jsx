@@ -10,11 +10,13 @@ function App() {
 
   return (
     <div className='outerItems'>
-    <div className='items'>
+    {/* <div className='items'>
       {data.map((val)=><Assignment1 key={val._id} data={val}/>)}
     </div>
-      <Assignment2/>
-      <Assignment3/>
+      <Assignment2/>*/}
+      
+      <Assignment3/> 
+
     </div>
   )
 }

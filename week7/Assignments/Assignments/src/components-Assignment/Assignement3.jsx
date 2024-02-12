@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import './Assignment3.css'
+import words from 'an-array-of-english-words' //used Library
 export default function Assignment3(){
     const [num,setNum] = useState(0);
-    const words= ["I",".","am","is","this",'got',"any"]
+    const [text,setText] = useState("hey")
+    // const words= ["I",".","am","is","this",'got',"any","Devesh",""]
     function changeNUm(nums) {
         setNum(nums.target.value);
     }
@@ -11,12 +13,17 @@ export default function Assignment3(){
         function getRandomInteger(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
           }
-        
-            for (let index = 0; index < num; index++) {
-                const element = array[getRandomInteger(0,num)];
-                const str = " "+element+" ";
-                
-            }
+          let str =""; 
+          for(let j = 0;j<num;j++)
+          {
+              for (let index = 0; index < 10; index++) {
+                  const element = words[getRandomInteger(0,words.length-1)];
+                  str = str+element+" ";
+                //   console.log(str);
+              }
+              str +="\n\n\n\n\n\n\n\n\n\n\n\n";
+          }
+            setText(str);
     
     }
     return<div className="ParaGenerator">
@@ -26,10 +33,10 @@ export default function Assignment3(){
             placeholder='Enter number' />
             <button
             onClick={
-                ()=>console.log(num)
+                generatPara
             }
             >Generate</button>
         </div>
-        <textarea name="Paragraphs" id="paraGraph" cols="100" rows="50"></textarea>
+        <div className='textArea' >{text}</div>
     </div>
 }

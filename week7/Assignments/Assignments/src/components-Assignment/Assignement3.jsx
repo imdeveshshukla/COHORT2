@@ -21,7 +21,7 @@ export default function Assignment3(){
                   str = str+element+" ";
                 //   console.log(str);
               }
-              str +="\n\n\n\n\n\n\n\n\n\n\n\n";
+              str +="\n\n";
           }
             setText(str);
     
@@ -37,6 +37,7 @@ export default function Assignment3(){
             }
             >Generate</button>
         </div>
-        <div className='textArea' >{text}</div>
+        <textarea name="txt" id="" cols="100" rows="10" value={text}></textarea>
+        {/* <div className='textArea' >{text}</div> */}
     </div>
 }

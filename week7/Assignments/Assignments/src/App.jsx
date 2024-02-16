@@ -6,7 +6,7 @@ import Assignment2 from './components-Assignment/Assignment2'
 import Assignment3 from './components-Assignment/Assignement3'
 function App() {
   const [count, setCount] = useState(0)
-  
+  const [updup, hey] = useState("");
 
   return (
     <div className='outerItems'>

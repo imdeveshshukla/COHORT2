@@ -11,6 +11,7 @@ function App() {
       <div className='bg-blue-800 h-10'></div>
       <div className='bg-green-800 h-10'></div>
       <div className='bg-red-800 h-10'></div>
+      
     </div>
   )
 }

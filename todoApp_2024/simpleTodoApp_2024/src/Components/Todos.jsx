@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 export function Todos(){
 
 
@@ -25,11 +26,8 @@ export function Todos(){
   
     useEffect(()=>{
         async function fetchData(){
-            const data = await fetch("http://localhost:3000/todos");
-            data.json().then((d)=>{
-                console.log(d);
-                return setTodo([...todos,...d])
-            })
+            const data = await axios.get("http://localhost:3000/todos");
+            setTodo(data.data);
         }
         fetchData();
     },[])

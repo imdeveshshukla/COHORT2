@@ -13,9 +13,6 @@ app.get("/todos",async function(req,res) {
         todos
     )
 });
-
-
-
 app.post("/todos",async function(req,res){
     const createPayLoad = req.body;
     const parsePayLoad = createTodo.safeParse(createPayLoad);
@@ -71,7 +68,9 @@ app.put("/completed",async function(req,res){
 
 
 app.get("/",(req,res)=>{
-    res.send("Hi");
+    res.json({
+        "Server": "Healthy"
+    });
 });
 
 app.listen(3000,()=>{console.log("Port Started on 3000");});

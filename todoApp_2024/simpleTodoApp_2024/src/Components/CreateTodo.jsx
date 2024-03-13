@@ -1,13 +1,19 @@
-import { useEffect,useState } from "react"
+import { useContext, useEffect,useState } from "react"
 import axios from "axios";
+import TodoContext from "../Contexts/TodoContext";
 export function CreateTodo(){
     const [title,setTitle] = useState();
     const [desc,setDesc] = useState();
+    const {todos,setTodo}  = useContext(TodoContext);
     async function createTod(){
         await axios.post("http://localhost:3000/todos",{
             "title":title,
             "desc":desc
         })
+        setTodo([...todos,{
+            "title":title,
+            "desc":desc
+        }])
     }
     return(
         <div>

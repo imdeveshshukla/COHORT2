@@ -1,15 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import './Todos.css';
+import TodoContext from '../Contexts/TodoContext';
 export function Todos(){
-    const [todos, setTodo] = useState([]);
-    useEffect(()=>{
-        async function fetchData(){
-            const data = await axios.get("http://localhost:3000/todos");
-            setTodo(data.data);
-        }
-        fetchData();
-    },[todos])
+    
+    
+    const { todos } = useContext(TodoContext);
+    // console.log(todos);  //Trial
 
     return(
         <div className='todoList'>

@@ -6,16 +6,20 @@ export function Todos(){
     
     
     const { todos } = useContext(TodoContext);
-    // console.log(todos);  //Trial
 
+    function deleteTodo(id) {
+        console.log(id);
+    }
     return(
         <div className='todoList'>
             {todos.map(function(todo){
+                {/* console.log(todo) */}
                 return (
                 <div>
                     <h1>{todo.title}</h1>
                     <h3>{todo.desc}</h3>
-                    <button>{(todo.completed)==true?"Not Completed":"Completed"}</button>
+                    <button>{(todo.completed)==true?"Completed":"Not Completed"}</button>
+                    <button onClick={()=>deleteTodo(todo._id)}>{"Delete"}</button>
                 </div>
                 );
             })}

@@ -11,7 +11,7 @@ app.post('/submit',async(req:any,res:any)=>{
     const {probId,code,lang} = req.body;
 
     try{
-        await client.lPush("Problems",JSON.stringify({probId,code,lang}));
+        await client.PUBLISH("Problems",JSON.stringify({probId,code,lang}));
         res.status(200).send("Submission Received");
     }
     catch(err)

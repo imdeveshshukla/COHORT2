@@ -17,7 +17,7 @@ const redis_1 = require("redis");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 const client = (0, redis_1.createClient)();
-client.connect();
+client.on('error', (err) => console.log('Redis Client Error', err));
 app.post('/submit', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { probId, code, lang } = req.body;
     try {
